@@ -31,11 +31,15 @@ wget https://github.com/apache/apr/archive/1.7.0.tar.gz
 wget https://github.com/apache/apr-util/archive/1.6.1.tar.gz
 
 tar xzf httpd-2.4.41.tar.gz
-tar xzf 2.4.41.tar.gz
 tar xzf 1.7.0.tar.gz
 tar xzf 1.6.1.tar.gz
-
-cd httpd-2.4.41.tar.gz
+ 
+mv apr-1.7.0 httpd-2.4.41/srclib/apr
+mv apr-util-1.6.1 httpd-2.4.41/srclib/apr-util	
+cd httpd-2.4.41
+make
+make install
+ 
 ./buildconf 
 ./configure --enable-ssl --enable-so --with-mpm=event --with-included-apr --prefix=/usr/local/apache2
 
